@@ -46,8 +46,8 @@ library(lubridate, warn.conflicts = FALSE)
 library(openair, warn.conflicts = FALSE)
 library(tidyr, warn.conflicts = FALSE)
 
-if (requireNamespace("ecanairquality", quietly = TRUE)) {
-  get_daily_all_stations_fn <- ecanairquality::get_daily_all_stations
+if (requireNamespace("recanaq", quietly = TRUE)) {
+  get_daily_all_stations_fn <- recanaq::get_daily_all_stations
 } else {
   project_root <- if (file.exists("DESCRIPTION")) "." else ".."
   report_env <- new.env(parent = globalenv())

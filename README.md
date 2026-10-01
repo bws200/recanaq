@@ -1,6 +1,6 @@
-# ecanairquality
+# recanaq
 
-`ecanairquality` provides R functions for retrieving Environment Canterbury
+`recanaq` provides R functions for retrieving Environment Canterbury
 (ECan) air-quality data and working with New Zealand holiday calendars.
 
 ## Installation
@@ -8,7 +8,7 @@
 Install the development version from GitHub:
 
 ```r
-remotes::install_github("bws200/ecanairquality")
+remotes::install_github("bws200/recanaq")
 ```
 
 For development in a checkout, restore the project environment with `renv`:
@@ -22,7 +22,7 @@ renv::restore()
 List monitored stations and their latest observation dates:
 
 ```r
-library(ecanairquality)
+library(recanaq)
 
 stations <- get_stations()
 ```
@@ -88,7 +88,7 @@ describes an end-to-end PM10 and PM2.5 trend workflow using
 retrieves live ECan data. Build it locally with:
 
 ```r
-vignette("theil-sen-trend-analysis", package = "ecanairquality")
+vignette("theil-sen-trend-analysis", package = "recanaq")
 ```
 
 The repository also includes the parameterized Quarto report

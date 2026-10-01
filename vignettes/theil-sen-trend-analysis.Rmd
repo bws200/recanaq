@@ -44,7 +44,7 @@ library(dplyr, warn.conflicts = FALSE)
 library(lubridate, warn.conflicts = FALSE)
 library(openair, warn.conflicts = FALSE)
 library(tidyr, warn.conflicts = FALSE)
-library(ecanairquality)
+library(recanaq)
 ```
 
 ## Retrieve daily data

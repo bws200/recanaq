@@ -11,7 +11,7 @@
 #' and returns data as tibbles suitable for analysis with tidyverse tools.
 #'
 #' @docType package
-#' @name ecanairquality
+#' @name recanaq
 #' @keywords internal
 "_PACKAGE"
 

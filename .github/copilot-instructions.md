@@ -1,8 +1,8 @@
-# Copilot instructions for `ecanairquality`
+# Copilot instructions for `recanaq`
 
 ## Project overview
 
-`ecanairquality` is an R package that retrieves Environment Canterbury (ECan)
+`recanaq` is an R package that retrieves Environment Canterbury (ECan)
 air-quality data and provides New Zealand holiday-calendar helpers. It is a
 network-backed package: the main functions call ECan's CSV endpoints, while
 the holiday functions scrape the New Zealand Ministry of Education site,
@@ -21,15 +21,15 @@ Build and check the package from the repository root:
 
 ```text
 R CMD build .
-R CMD check ecanairquality_0.1.1.tar.gz
+R CMD check recanaq_0.1.1.tar.gz
 ```
 
 There is currently no `tests/` directory, `testthat` configuration, or lint
 configuration. Validate focused changes with direct R calls, for example:
 
 ```r
-ecanairquality::check_date("01/01/2025")
-ecanairquality::get_stations()
+recanaq::check_date_format("01/01/2025")
+recanaq::get_stations()
 ```
 
 Network-backed examples should be run deliberately because they depend on
@@ -37,7 +37,7 @@ external services and current remote data.
 
 ## Architecture
 
-- `R/ecanairquality-package.R` contains package-level documentation and the
+- `R/recanaq-package.R` contains package-level documentation and the
   roxygen imports used to generate `NAMESPACE`.
 - The air-quality pipeline starts with `get_stations()`, which downloads the
   monitored-site table. `get_daily_all_stations()` validates the requested

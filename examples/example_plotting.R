@@ -1,4 +1,4 @@
-df <- ecanairquality::get_daily_all_stations(from_date = "01/01/2025", to_date = "01/01/2026")
+df <- recanaq::get_daily_all_stations(from_date = "01/01/2025", to_date = "01/01/2026")
 
 df_temps <- df |>
   filter(name == "Temperature 2m (DegC)")

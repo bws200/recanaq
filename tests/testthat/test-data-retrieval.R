@@ -105,7 +105,7 @@ test_that("get_daily_all_stations combines each station result", {
     },
     get_stations = function() station_data,
     get_daily_one_station = station_result,
-    .package = "ecanairquality"
+    .package = "recanaq"
   )
 
   expect_equal(result$site_no, c(101, 202))

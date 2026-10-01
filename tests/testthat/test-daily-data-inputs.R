@@ -51,7 +51,7 @@ test_that("get_daily_all_stations can continue after a station failure", {
       },
       get_stations = function() station_data,
       get_daily_one_station = station_result,
-      .package = "ecanairquality"
+      .package = "recanaq"
     ),
     "station unavailable"
   )

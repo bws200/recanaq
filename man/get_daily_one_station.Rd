@@ -14,9 +14,9 @@ get_daily_one_station(
 \arguments{
 \item{site_no}{Numeric or character station identifier. Default is \code{2} (Riccarton Road)}
 
-\item{from_date}{Character date in \code{"dd/mm/yyyy"} format. Default is 1/01/2026}
+\item{from_date}{Character date in \code{"dd/mm/yyyy"} format. Default is \code{1/01/2026}}
 
-\item{to_date}{Character date in \code{"dd/mm/yyyy"} format. Default is 31/01/2026}
+\item{to_date}{Character date in \code{"dd/mm/yyyy"} format. Default is \code{31/01/2026}}
 
 \item{request_timeout}{Numeric. Maximum time in seconds to wait for the server
 response before aborting. Default is \code{10}.}

@@ -1,4 +1,4 @@
-url: https://bws200.github.io/ecanairquality
+url: https://bws200.github.io/recanaq
 
 template:
   bootstrap: 5
@@ -23,7 +23,7 @@ navbar:
         href: articles/theil-sen-trend-analysis.html
     github:
       icon: fab fa-github
-      href: https://github.com/bws200/ecanairquality
+      href: https://github.com/bws200/recanaq
       aria-label: GitHub
 
 reference:

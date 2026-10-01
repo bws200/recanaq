@@ -1,13 +1,13 @@
 Type: Package
-Package: ecanairquality
-Title: Helpful Functions to Get Data and Generate Plots for Ecan Air Quality Data
+Package: recanaq
+Title: Retrieve Environment Canterbury Air Quality Data
 Version: 0.1.1
 Authors@R: 
     person("Ben", "Scott", , "ben.scott@ecan.govt.nz", role = c("aut", "cre"))
 Description: Retrieves data from the Ecan data portal website. Also does
     some basic plotting examples.
 License: MIT + file LICENSE
-URL: https://bws200.github.io/ecanairquality, https://github.com/bws200/ecanairquality
+URL: https://bws200.github.io/recanaq, https://github.com/bws200/recanaq
 Depends: 
     R (>= 4.1.0)
 Imports:

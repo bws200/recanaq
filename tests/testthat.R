@@ -1,4 +1,4 @@
 library(testthat)
-library(ecanairquality)
+library(recanaq)
 
-test_check("ecanairquality")
+test_check("recanaq")
