@@ -49,3 +49,10 @@ test_that("download_school_holidays creates its destination for empty input", {
   expect_true(dir.exists(download_dir))
   expect_length(result, 0)
 })
+
+test_that("get_nz_holidays validates supported years and flags", {
+  expect_error(get_nz_holidays(2033), "between 2022 and 2032")
+  expect_error(get_nz_holidays(2026, holidays_only = NA), "single TRUE or FALSE")
+  expect_error(get_nz_holidays(c(2026, 2027)), "single four-digit")
+  expect_error(get_nz_holidays("2026x"), "single four-digit")
+})

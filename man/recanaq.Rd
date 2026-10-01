@@ -28,11 +28,11 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Ben Scott \email{ben.scott@ecan.govt.nz}
+\strong{Maintainer}: BenS \email{ben.scott@ecan.govt.nz}
 
 Authors:
 \itemize{
-  \item Ben Scott \email{ben.scott@ecan.govt.nz}
+  \item BenS \email{ben.scott@ecan.govt.nz}
 }
 
 }

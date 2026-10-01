@@ -9,8 +9,8 @@ get_nz_holidays(target_year, holidays_only = TRUE)
 \arguments{
 \item{target_year}{An integer or character specifying the calendar year (e.g., 2026).}
 
-\item{holidays_only}{A logical value. If \code{TRUE}, the function returns only
-the official holiday rows. If \code{FALSE} (default), it returns a continuous
+\item{holidays_only}{A logical value. If \code{TRUE} (default), the function returns only
+the official holiday rows. If \code{FALSE}, it returns a continuous
 365/366-day calendar grid.}
 }
 \value{

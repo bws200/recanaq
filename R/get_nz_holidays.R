@@ -190,8 +190,8 @@ get_school_holidays <- function(download_dir = tempdir()) {
 #' and returns a structured data frame.
 #'
 #' @param target_year An integer or character specifying the calendar year (e.g., 2026).
-#' @param holidays_only A logical value. If \code{TRUE}, the function returns only
-#'   the official holiday rows. If \code{FALSE} (default), it returns a continuous
+#' @param holidays_only A logical value. If \code{TRUE} (default), the function returns only
+#'   the official holiday rows. If \code{FALSE}, it returns a continuous
 #'   365/366-day calendar grid.
 #'
 #' @return A data frame containing two columns: \code{Date} (Date class) and
@@ -202,6 +202,22 @@ get_school_holidays <- function(download_dir = tempdir()) {
 #' @importFrom dplyr mutate filter select
 #'
 get_nz_holidays <- function(target_year, holidays_only = TRUE) {
+
+  if (length(target_year) != 1 || is.na(target_year) ||
+      !grepl("^\\d{4}$", as.character(target_year))) {
+    stop("`target_year` must be a single four-digit year.", call. = FALSE)
+  }
+
+  target_year <- as.integer(target_year)
+
+  if (target_year < 2022 || target_year > 2032) {
+    stop("`target_year` must be between 2022 and 2032.", call. = FALSE)
+  }
+
+  if (length(holidays_only) != 1 || is.na(holidays_only) ||
+      !is.logical(holidays_only)) {
+    stop("`holidays_only` must be a single TRUE or FALSE value.", call. = FALSE)
+  }
 
   # 1. Fetch the raw CSV directly from the GitHub repository link
   csv_url <- "https://raw.githubusercontent.com/sohnemann/New-Zealand-Public-Holidays/main/data/2022-2032-public-holidays-all.csv"
@@ -295,7 +311,7 @@ update_holiday_history <- function(target_year, dev_mode = FALSE) {
     csv_path <- file.path(dir_path, file_name)
   } else {
     # Standard CRAN-compliant production path for an installed package environment
-    dir_path <- tools::R_user_dir("nzholidays", which = "data")
+    dir_path <- tools::R_user_dir("recanaq", which = "data")
     if (!dir.exists(dir_path)) {
       dir.create(dir_path, recursive = TRUE)
     }
