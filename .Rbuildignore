@@ -3,5 +3,8 @@
 ^renv\.lock$
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^\.RData$
+^\.Rhistory$
+^\.gitignore$
 ^LICENSE\.md$
 ^examples$

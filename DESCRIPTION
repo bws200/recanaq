@@ -3,7 +3,9 @@ Package: recanaq
 Title: Retrieve Environment Canterbury Air Quality Data
 Version: 0.1.1
 Authors@R: 
-    person("Ben", "Scott", , "ben.scott@ecan.govt.nz", role = c("aut", "cre"))
+    person("BenS", email = "ben.scott@ecan.govt.nz", role = c("aut", "cre"))
+Author: BenS
+Maintainer: BenS <ben.scott@ecan.govt.nz>
 Description: Retrieves data from the Ecan data portal website. Also does
     some basic plotting examples.
 License: MIT + file LICENSE
