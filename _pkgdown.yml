@@ -21,6 +21,8 @@ navbar:
       menu:
       - text: Theil-Sen trend analysis
         href: articles/theil-sen-trend-analysis.html
+      - text: Air quality monitoring sites
+        href: articles/air-quality-monitoring-sites.html
     github:
       icon: fab fa-github
       href: https://github.com/bws200/recanaq
@@ -47,6 +49,7 @@ articles:
 - title: Analysis workflows
   contents:
   - theil-sen-trend-analysis
+  - air-quality-monitoring-sites
 
 news:
   releases:
