@@ -79,6 +79,21 @@ Use `dev_mode = TRUE` only when deliberately updating the source checkout's
 `inst/extdata/nz_holiday_history.csv`; installed packages write to the
 user-level package data directory.
 
+## Monitoring-site catalogue
+
+The package also includes the
+[`air-quality-monitoring-sites`](vignettes/air-quality-monitoring-sites.Rmd)
+vignette. It retrieves the current monitoring-site catalogue from the ECan
+website, adds observation-freshness fields, and produces site and airshed
+summaries:
+
+```r
+vignette("air-quality-monitoring-sites", package = "recanaq")
+```
+
+The current site endpoint does not provide latitude and longitude, so the
+workflow produces a table rather than a map.
+
 ## Trend analysis example
 
 The package includes the vignette

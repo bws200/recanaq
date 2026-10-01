@@ -1,0 +1,119 @@
+---
+title: "Air Quality Monitoring Sites"
+author: "BenS"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+vignette: >
+  %\VignetteIndexEntry{Air Quality Monitoring Sites}
+  %\VignetteEngine{knitr::knitr}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  eval = FALSE,
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE
+)
+```
+
+This vignette retrieves the current air-quality monitoring-site catalogue from
+Environment Canterbury's public data website using `recanaq::get_stations()`.
+The endpoint provides station identifiers, names, locations, airsheds, and the
+latest observation time. It does not currently provide latitude and longitude,
+so this workflow produces a searchable site catalogue rather than a map.
+
+## Retrieve site data
+
+```{r get-sites}
+library(dplyr, warn.conflicts = FALSE)
+library(knitr)
+library(recanaq)
+
+df_stations <- get_stations()
+```
+
+The returned data has one row per monitored site:
+
+```{r inspect-sites}
+str(df_stations)
+```
+
+## Prepare the catalogue
+
+Add a date field and a simple freshness indicator. The threshold is deliberately
+visible so it can be changed when reviewing current monitoring coverage.
+
+```{r clean-sites}
+recent_days <- 90
+
+reference_date <- Sys.Date()
+
+df_stations_clean <- df_stations |>
+  mutate(
+    latest_date = as.Date(latest_date_time),
+    days_since_latest = as.integer(reference_date - latest_date),
+    data_status = if_else(
+      !is.na(days_since_latest) & days_since_latest <= recent_days,
+      "Recent observation",
+      "Older or missing observation"
+    )
+  ) |>
+  arrange(city, site_name)
+```
+
+## Review the site catalogue
+
+```{r site-table}
+df_stations_clean |>
+  select(
+    site_no,
+    site_name,
+    long_name,
+    city,
+    air_shed,
+    latest_date,
+    data_status
+  ) |>
+  kable(
+    format = "html",
+    caption = paste("ECan monitoring sites retrieved on", reference_date)
+  )
+```
+
+## Summarise coverage
+
+The following summaries help identify how sites are distributed across cities
+and airsheds, and which sites may need follow-up before analysis.
+
+```{r airshed-summary}
+df_stations_clean |>
+  count(air_shed, sort = TRUE) |>
+  kable(format = "html", caption = "Monitoring sites by airshed")
+```
+
+```{r freshness-summary}
+df_stations_clean |>
+  count(data_status, sort = TRUE) |>
+  kable(format = "html", caption = "Latest-observation freshness")
+```
+
+## Save a copy
+
+Save the retrieved catalogue when a reproducible snapshot is required. The
+file records the response available from the website at the time of retrieval.
+
+```{r export-sites}
+output_dir <- "outputs"
+dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
+
+readr::write_csv(
+  df_stations_clean,
+  file.path(output_dir, paste0("ecan_monitoring_sites_", reference_date, ".csv"))
+)
+```
